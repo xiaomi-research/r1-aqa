@@ -48,7 +48,7 @@ Our main findings are as follows:
 
 ### Updates
 
-- 2025-03-16: We release the R1-AQA repo.
+- 2025-03-17: We release the R1-AQA repo.
 
 
 ## Training
@@ -127,6 +127,10 @@ sh test_mmau.sh
 ```
 
 
+## Acknowledge
+> 1. We referred to the implementation of [R1-V](https://github.com/Deep-Agent/R1-V) for Audio GRPO Training.
+> 2. We sincerely thank [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/)for providing Audio-Visual QA dataset, [MMAU](https://github.com/Sakshi113/MMAU/tree/main) for providing AQA evaluation dataset.
+
 ## Citation
 
 ```bib
@@ -134,7 +138,7 @@ sh test_mmau.sh
   author       = {Li, Gang and Liu, Jizhong and Dinkel, Heinrich and Niu, Yadong and Zhang, Junbo and Luan, Jian},
   title        = {R1-AQA (Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering)},
   howpublished = {\url{https://github.com/xiaomi/r1-aqa}},
-  note         = {Accessed: 2025-03-16},
+  note         = {Accessed: 2025-03-17},
   year         = {2025}
 }
 ```
