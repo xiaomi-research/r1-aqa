@@ -1,0 +1,10 @@
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0
+soundfile==0.12.1
+transformers==4.49.0
+peft==0.14.0
+deepspeed==0.16.3
+trl==0.15.2
+math-verify==0.7.0
+wandb==0.19.8
