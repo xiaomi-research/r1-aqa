@@ -9,7 +9,7 @@ Our main findings are as follows:
 - The GRPO algorithm can be directly and effectively applied to the audio modality, even to `Qwen2-Audio-7B-Instruct` with only 8.2B parameters.
 - With only 38k post-training samples, reinforcement learning outperforms supervised fine-tuning, indicating that RL-based approaches can be effective without large datasets.
 - The explicit reasoning process has not shown significant benefits for AQA tasks, and how to efficiently leverage *deep thinking* or step-by-step remains an open question for further research.
-- large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
+- Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
 | Model                                      | Method                  | Sound  | Music  | Speech | Average |
@@ -55,7 +55,7 @@ Our main findings are as follows:
 
 ### Data Preparation
   
-We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `train` subset (train_qa.josn). And convert data to the R1-AQA format -- a text file where each line represents a JSON object with the following keys:
+We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys.
 ```json
 {
     # The data presented below originate from the original AVQA dataset.
@@ -88,15 +88,15 @@ sh run_grpo.sh
 
 #### NOTE:
 - Replace the `DATA_FILE` variable in the `run_grpo.sh` with your dataset path.
-- If you have downloaded the `Qwen2-Audio-7B-Instruct` model, modify the `MODEL_NP` variable in `run_grpo.sh` to your local model path.
+- If you already have the `Qwen2-Audio-7B-Instruct` model, please modify the `MODEL_NP` variable in `run_grpo.sh` to your local model path.
 
 
 ## Testing
 
 ### MMAU-mini
-To evaluate the MMAU-mini dataset, follow these steps:
-- Download Data  
-Testing the MMAU-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py) and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). A proper method to obtain the data is outlined below:
+Evaluate the MMAU `test-mini` dataset, please follow these steps:
+- Download Data
+  - To test the MMAU Test-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py), and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). The method for obtaining data is as follows:
 ```bash
 mkdir -p data && cd data
 
@@ -122,14 +122,15 @@ python src/utils/prepare_mmau.py \
 ```
 - Evaluation
 ```bash
-# Testing MMAU-mini with in steps: [100, 200, 300, 400, 500]. You can modify the script to test other steps or change other parameters.
+# Testing MMAU-mini with in steps: [100, 200, 300, 400, 500].
+# You can modify the script to test other steps or change other parameters.
 sh test_mmau.sh
 ```
 
 
-## Acknowledge
-> 1. We referred to the implementation of [R1-V](https://github.com/Deep-Agent/R1-V) for Audio GRPO Training.
-> 2. We sincerely thank [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/)for providing Audio-Visual QA dataset, [MMAU](https://github.com/Sakshi113/MMAU/tree/main) for providing AQA evaluation dataset.
+## Acknowledgement
+> 1. We have referred to the implementation of [R1-V](https://github.com/Deep-Agent/R1-V) for the GRPO-based training.
+> 2. We sincerely thank [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) and [MMAU](https://github.com/Sakshi113/MMAU/tree/main) for providing the datasets.
 
 ## Citation
 
