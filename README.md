@@ -1,4 +1,4 @@
-# R1-AQA (Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering)
+# R1-AQA --- Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Our main findings are as follows:
 | SALMONN                                    | Direct Inference\*      | 41.00  | 34.80  | 25.50  | 33.70   |
 | Qwen2-Audio-7B-Instruct                    | CoTA \[1\]            | 60.06  | 64.30  | 60.70  | 61.71   |
 | Qwen2-Audio-7B-Instruct                    | Zero-Shot-CoT \[2\]   | 61.86  | 56.29  | 55.26  | 57.80   |
-| Qwen2-Audio-7B-Instruct                    | **GRPO (Ours)**         | **69.37** | 66.77  | 57.36  | **64.50** |
+| **Qwen2-Audio-7B-Instruct**                | **GRPO (Ours)**         | **69.37** | 66.77  | 57.36  | **64.50** |
 
 #### Notes:
 \* The data are sourced from the MMAU official website: [https://sakshi113.github.io/mmau_homepage/](https://sakshi113.github.io/mmau_homepage/)  
@@ -37,7 +37,7 @@ Our main findings are as follows:
 [🤗 R1-AQA Models: mispeech/r1-aqa](https://huggingface.co/mispeech/r1-aqa)  
 
 **arXiv:**  
-[📝 Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering]()
+[📝 Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering](https://arxiv.org/abs/2503.11197)
 
 
 **R1-AQA Team:**  
@@ -134,11 +134,13 @@ sh test_mmau.sh
 ## Citation
 
 ```bib
-@misc{li2025r1aqa,
-  author       = {Li, Gang and Liu, Jizhong and Dinkel, Heinrich and Niu, Yadong and Zhang, Junbo and Luan, Jian},
-  title        = {R1-AQA (Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering)},
-  howpublished = {\url{https://github.com/xiaomi/r1-aqa}},
-  note         = {Accessed: 2025-03-17},
-  year         = {2025}
+@misc{li2025reinforcementlearningoutperformssupervised,
+      title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering}, 
+      author={Gang Li and Jizhong Liu and Heinrich Dinkel and Yadong Niu and Junbo Zhang and Jian Luan},
+      year={2025},
+      eprint={2503.11197},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2503.1119; https://github.com/xiaomi-research/r1-aqa}, 
 }
 ```
