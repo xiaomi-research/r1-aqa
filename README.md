@@ -43,13 +43,13 @@ Our main findings are as follows:
 [📝 Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering](https://arxiv.org/abs/2503.11197)
 
 **R1-AQA Team:**  
-[Gang Li](https://github.com/GrantL10)`*` · [Jizhong Liu](https://github.com/frankenliu)`*` · [Heinrich Dinkel](https://github.com/RicherMans) · [Yadong Niu](https://github.com/nyd3001) · [Junbo Zhang](https://github.com/jimbozhang) · Jian Luan
+[Gang Li](https://github.com/GrantL10)`*` · [Jizhong Liu](https://github.com/frankenliu)`*` · [Heinrich Dinkel](https://github.com/RicherMans) · [Yadong Niu](https://github.com/nyd3001) · [Junbo Zhang](https://github.com/jimbozhang) · [Jian Luan](https://github.com/jianluan)
 
 `*` Euqual contribution.
 
 ### Updates
 
-- 2025-03-18: Support the process containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
+- 2025-03-18: Support the mode containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
 - 2025-03-17: Release the R1-AQA repo.
 
 ## Training
@@ -57,6 +57,7 @@ Our main findings are as follows:
 ### Data Preparation
 
 We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
+
 ```json
 {
     # The data presented below originate from the original AVQA dataset.
@@ -97,9 +98,12 @@ sh run_grpo.sh
 ## Testing
 
 ### MMAU Test-mini
-Evaluate the MMAU `test-mini` dataset, please follow these steps:
+
+Evaluate the MMAU `Test-mini` dataset, please follow these steps:
+
 - Download Data
   - To test the MMAU Test-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py), and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). The method for obtaining data is as follows:
+
 ```bash
 mkdir -p data && cd data
 
@@ -134,15 +138,18 @@ python src/utils/prepare_mmau.py \
 sh test_mmau.sh
 ```
 
-## If you want to see how to "think"
+## Hacking It
+
+We encourage hacking it on your own. If you want to see the "thinking" or improve our work, here are some hints:
 
 > 1. Uncomment the line 25 of `src\dataset\dataset.py`;
 > 2. Uncomment the line 55 of `src\utils\rewards.py`;
 > 3. Uncomment the line 46 of `src\test.py`;
-> 4. Train and test you model;
+> 4. Train and test your model;
 > 5. ***Design your CoT strategy based on `<think> </think>`. Let's explore effective ways to combine RL and CoT!***
 
 ## Acknowledgement
+
 > 1. We have referred to the implementation of [R1-V](https://github.com/Deep-Agent/R1-V) for the GRPO-based training.
 > 2. We sincerely thank [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) and [MMAU](https://github.com/Sakshi113/MMAU/tree/main) for providing the datasets.
 
