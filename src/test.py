@@ -42,6 +42,8 @@ def _get_audio(wav_path):
 def _get_message(obj_dict):
     choice_str = f"Please choose the answer from the following options: {obj_dict['choices']}."
     question_template = f"{obj_dict['question']} {choice_str} Output the final answer in <answer> </answer>."
+    # If you want to improve the thinking process, uncomment the next line and design your strategy.
+    # question_template = f"{obj_dict['question']} {choice_str} Output the thinking process in <think> </think> and final answer in <answer> </answer>."
     print(question_template)
     message = [
         {
