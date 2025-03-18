@@ -2,16 +2,18 @@
 
 ## Introduction
 
-R1-AQA is a audio question answering (AQA) model based on `Qwen2-Audio-7B-Instruct`, optimized through reinforcement learning (RL) using the group relative policy optimization (GRPO) algorithm. 
+R1-AQA is a audio question answering (AQA) model based on `Qwen2-Audio-7B-Instruct`, optimized through reinforcement learning (RL) using the group relative policy optimization (GRPO) algorithm.
 This implementation has achieved state-of-the-art performance on MMAU *Test-mini* benchmark with only 38k post-training samples.
 
 Our main findings are as follows:
+
 - The GRPO algorithm can be directly and effectively applied to the audio modality, even to `Qwen2-Audio-7B-Instruct` with only 8.2B parameters.
 - With only 38k post-training samples, reinforcement learning outperforms supervised fine-tuning, indicating that RL-based approaches can be effective without large datasets.
 - The explicit reasoning process has not shown significant benefits for AQA tasks, and how to efficiently leverage *deep thinking* or step-by-step remains an open question for further research.
 - Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
+
 | Model                                      | Method                  | Sound  | Music  | Speech | Average |
 |--------------------------------------------|-------------------------|--------|--------|--------|---------|
 | \                                          | Human\*                 | 86.31  | 78.22  | 82.17  | 82.23   |
@@ -24,11 +26,12 @@ Our main findings are as follows:
 | GPT4o + Weak Cap.                          | Direct Inference\*      | 39.33  | 41.90  | 58.25  | 45.70   |
 | Llama-3-8B-Instruct + Weak Cap.            | Direct Inference\*      | 34.23  | 38.02  | 54.05  | 42.10   |
 | SALMONN                                    | Direct Inference\*      | 41.00  | 34.80  | 25.50  | 33.70   |
-| Qwen2-Audio-7B-Instruct                    | CoTA \[1\]            | 60.06  | 64.30  | 60.70  | 61.71   |
-| Qwen2-Audio-7B-Instruct                    | Zero-Shot-CoT \[2\]   | 61.86  | 56.29  | 55.26  | 57.80   |
+| Qwen2-Audio-7B-Instruct                    | CoTA \[1\]              | 60.06  | 64.30  | 60.70  | 61.71   |
+| Qwen2-Audio-7B-Instruct                    | Zero-Shot-CoT \[2\]     | 61.86  | 56.29  | 55.26  | 57.80   |
 | **Qwen2-Audio-7B-Instruct**                | **GRPO (Ours)**         | **69.37** | 66.77  | 57.36  | **64.50** |
 
-#### Notes:
+#### Notes
+
 \* The data are sourced from the MMAU official website: [https://sakshi113.github.io/mmau_homepage/](https://sakshi113.github.io/mmau_homepage/)  
 \[1\] Xie, Zhifei, et al. "Audio-Reasoner: Improving Reasoning Capability in Large Audio Language Models." arXiv preprint arXiv:2503.02318 (2025).  
 \[2\] Ma, Ziyang, et al. "Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Language Model." arXiv preprint arXiv:2501.07246 (2025).  
@@ -39,23 +42,21 @@ Our main findings are as follows:
 **arXiv:**  
 [📝 Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering](https://arxiv.org/abs/2503.11197)
 
-
 **R1-AQA Team:**  
-[Gang Li](https://github.com/GrantL10)`*` · [Jizhong Liu](https://github.com/frankenliu)`*` · [Heinrich Dinkel](https://github.com/RicherMans) · [Yadong Niu](https://github.com/nyd3001) · [Junbo Zhang](https://github.com/jimbozhang)  
+[Gang Li](https://github.com/GrantL10)`*` · [Jizhong Liu](https://github.com/frankenliu)`*` · [Heinrich Dinkel](https://github.com/RicherMans) · [Yadong Niu](https://github.com/nyd3001) · [Junbo Zhang](https://github.com/jimbozhang) · Jian Luan
 
 `*` Euqual contribution.
 
-
 ### Updates
 
-- 2025-03-17: We release the R1-AQA repo.
-
+- 2025-03-18: Support the process containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
+- 2025-03-17: Release the R1-AQA repo.
 
 ## Training
 
 ### Data Preparation
-  
-We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys.
+
+We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
 ```json
 {
     # The data presented below originate from the original AVQA dataset.
@@ -77,7 +78,9 @@ We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_
     "audio_path": "Path to wav dir/-HG3Omg_89c_30.wav"
 }
 ```
+
 ### GRPO
+
 ```bash
 sh run_grpo.sh
 ```
@@ -86,14 +89,14 @@ sh run_grpo.sh
 
 ![Image](./resources/wandb.png)
 
-#### NOTE:
+#### NOTE
+
 - Replace the `DATA_FILE` variable in the `run_grpo.sh` with your dataset path.
 - If you already have the `Qwen2-Audio-7B-Instruct` model, please modify the `MODEL_NP` variable in `run_grpo.sh` to your local model path.
 
-
 ## Testing
 
-### MMAU-mini
+### MMAU Test-mini
 Evaluate the MMAU `test-mini` dataset, please follow these steps:
 - Download Data
   - To test the MMAU Test-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py), and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). The method for obtaining data is as follows:
@@ -112,7 +115,9 @@ tar -xzvf test-mini-audios.tar.gz
 
 cd ../../
 ```
+
 - Format Data  
+
 ```bash
 # Prepare the data format file we need
 python src/utils/prepare_mmau.py \
@@ -120,13 +125,22 @@ python src/utils/prepare_mmau.py \
     --wav_dir data/MMAU/test-mini-audios \
     --out_file data/MMAU/mmau-mini.data
 ```
+
 - Evaluation
+
 ```bash
-# Testing MMAU-mini with in steps: [100, 200, 300, 400, 500].
+# Testing MMAU test-mini with in steps: [100, 200, 300, 400, 500]. 
 # You can modify the script to test other steps or change other parameters.
 sh test_mmau.sh
 ```
 
+## If you want to see how to "think"
+
+> 1. Uncomment the line 25 of `src\dataset\dataset.py`;
+> 2. Uncomment the line 55 of `src\utils\rewards.py`;
+> 3. Uncomment the line 46 of `src\test.py`;
+> 4. Train and test you model;
+> 5. ***Design your CoT strategy based on `<think> </think>`. Let's explore effective ways to combine RL and CoT!***
 
 ## Acknowledgement
 > 1. We have referred to the implementation of [R1-V](https://github.com/Deep-Agent/R1-V) for the GRPO-based training.

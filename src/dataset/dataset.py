@@ -21,6 +21,8 @@ def _handle_wav(wav_path, target_rate=16000):
 def _handle_avqa(obj_avqa):
     choice_str = f"Please choose the answer from the following options: {obj_avqa['multi_choice']}."
     question_template = f"{obj_avqa['question_text'].replace('video', 'audio')} {choice_str} Output the final answer in <answer> </answer>."
+    # If you want to improve the thinking process, uncomment the next line and design your strategy.
+    # question_template = f"{obj_avqa['question_text'].replace('video', 'audio')} {choice_str} Output the thinking process in <think> </think> and final answer in <answer> </answer>."
     obj_avqa["prompt"] = [{"role": "user", "content": [{"type": "audio", "audio_url": obj_avqa["audio_path"]}, {"type": "text", "text": question_template}]}]
     answer_str = obj_avqa["multi_choice"][obj_avqa["answer"]]
     obj_avqa["solution"] = f"<answer>{answer_str}</answer>"
