@@ -45,7 +45,7 @@ Our main findings are as follows:
 **R1-AQA Team:**  
 [Gang Li](https://github.com/GrantL10)`*` · [Jizhong Liu](https://github.com/frankenliu)`*` · [Heinrich Dinkel](https://github.com/RicherMans) · [Yadong Niu](https://github.com/nyd3001) · [Junbo Zhang](https://github.com/jimbozhang) · [Jian Luan](https://github.com/jianluan)
 
-`*` Euqual contribution.
+`*` Equal contribution.
 
 ### Updates
 
