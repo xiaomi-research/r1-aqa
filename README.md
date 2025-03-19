@@ -12,6 +12,9 @@ Our main findings are as follows:
 - The explicit reasoning process has not shown significant benefits for AQA tasks, and how to efficiently leverage *deep thinking* or step-by-step remains an open question for further research.
 - Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
+Additional Notes:  
+The entire training subset of AVQA consists of approximately 40k samples. However, We use only about 38k samples, because some data sources have become invalid，Other datasets using YouTube sources face a similar issue, such as AuidoSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
 
 | Model                                      | Method                  | Sound  | Music  | Speech | Average |
@@ -37,7 +40,7 @@ Our main findings are as follows:
 \[2\] Ma, Ziyang, et al. "Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Language Model." arXiv preprint arXiv:2501.07246 (2025).  
 
 **Huggingface:**  
-[🤗 R1-AQA Models: mispeech/r1-aqa](https://huggingface.co/mispeech/r1-aqa)  
+[🤗 R1-AQA Model: mispeech/r1-aqa](https://huggingface.co/mispeech/r1-aqa)  
 
 **arXiv:**  
 [📝 Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering](https://arxiv.org/abs/2503.11197)
@@ -56,7 +59,7 @@ Our main findings are as follows:
 
 ### Data Preparation
 
-We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
+We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.json), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
 
 ```json
 {
