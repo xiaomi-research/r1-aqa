@@ -56,7 +56,7 @@ Our main findings are as follows:
 
 ### Data Preparation
 
-We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.josn), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
+We use the [AVQA](https://mn.cs.tsinghua.edu.cn/avqa/) `training` subset (train_qa.json), and convert the data to the R1-AQA format, where each line in the text file represents a JSON object with specific keys
 
 ```json
 {
