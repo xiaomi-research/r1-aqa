@@ -13,7 +13,7 @@ Our main findings are as follows:
 - Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
 Additional Notes:  
-The entire training subset of AVQA consists of approximately 40k samples. However, We use only about 38k samples, because some data sources have become invalid，Other datasets using YouTube sources face a similar issue, such as AuidoSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+The entire training subset of AVQA consists of approximately 40k samples. However, We use only about 38k samples, because some data sources have become invalid，Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
 
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
 
