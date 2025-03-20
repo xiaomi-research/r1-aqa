@@ -13,7 +13,8 @@ Our main findings are as follows:
 - Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
 Additional Notes:  
-The entire training subset of AVQA consists of approximately 40k samples. However, We use only about 38k samples, because some data sources have become invalid，Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+- The AVQA training set originally consists of approximately 40k samples. However, we use only about 38k samples because some data sources have become invalid. Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+- The statement about the 8.2B parameters is based on the *Qwen2-Audio Technical Report*.
 
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
 
@@ -159,13 +160,11 @@ We encourage hacking it on your own. If you want to see the "thinking" or improv
 ## Citation
 
 ```bib
-@misc{li2025reinforcementlearningoutperformssupervised,
-      title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering}, 
-      author={Gang Li and Jizhong Liu and Heinrich Dinkel and Yadong Niu and Junbo Zhang and Jian Luan},
-      year={2025},
-      eprint={2503.11197},
-      archivePrefix={arXiv},
-      primaryClass={cs.SD},
-      url={https://arxiv.org/abs/2503.1119; https://github.com/xiaomi-research/r1-aqa}, 
+@article{li2025reinforcement,
+  title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering},
+  author={Li, Gang and Liu, Jizhong and Dinkel, Heinrich and Niu, Yadong and Zhang, Junbo and Luan, Jian},
+  journal={arXiv preprint arXiv:2503.11197},
+  year={2025}
+  url={https://github.com/xiaomi-research/r1-aqa; https://huggingface.co/mispeech/r1-aqa}, 
 }
 ```
