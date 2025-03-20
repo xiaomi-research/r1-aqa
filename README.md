@@ -160,7 +160,7 @@ We encourage hacking it on your own. If you want to see the "thinking" or improv
 ## Citation
 
 ```bib
-@misc{li2025reinforcementlearningoutperformssupervised,
+@article{li2025reinforcement,
   title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering},
   author={Li, Gang and Liu, Jizhong and Dinkel, Heinrich and Niu, Yadong and Zhang, Junbo and Luan, Jian},
   journal={arXiv preprint arXiv:2503.11197},
