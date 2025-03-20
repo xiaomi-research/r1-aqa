@@ -9,11 +9,12 @@ Our main findings are as follows:
 
 - The GRPO algorithm can be directly and effectively applied to the audio modality, even to `Qwen2-Audio-7B-Instruct` with only 8.2B parameters.
 - With only 38k post-training samples, reinforcement learning outperforms supervised fine-tuning, indicating that RL-based approaches can be effective without large datasets.
-- The explicit reasoning process has not shown significant benefits for AQA tasks, and how to efficiently leverage *deep thinking* or step-by-step remains an open question for further research.
+- The explicit reasoning process has not shown significant benefits for AQA tasks, and how to efficiently leverage *deep thinking* or step-by-step reasoning remains an open question for further research.
 - Large audio language models (LALMs) still lag far behind humans auditory-language reasoning, suggesting that the RL-based approaches warrant further explorations.
 
 Additional Notes:  
-The entire training subset of AVQA consists of approximately 40k samples. However, We use only about 38k samples, because some data sources have become invalid，Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+- The AVQA training set originally consists of approximately 40k samples. However, we use only about 38k samples because some data sources have become invalid. Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
+- The statement about the 8.2B parameters is based on the *Qwen2-Audio Technical Report*.
 
 ### Table: Accuracies (%) on MMAU Test-mini benchmark
 
@@ -53,7 +54,7 @@ The entire training subset of AVQA consists of approximately 40k samples. Howeve
 ### Updates
 
 - 2025-03-18: Support the mode containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
-- 2025-03-17: Release the R1-AQA repo.
+- 2025-03-17: Release the R1-AQA repository.
 
 ## Training
 
@@ -160,12 +161,10 @@ We encourage hacking it on your own. If you want to see the "thinking" or improv
 
 ```bib
 @misc{li2025reinforcementlearningoutperformssupervised,
-      title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering}, 
-      author={Gang Li and Jizhong Liu and Heinrich Dinkel and Yadong Niu and Junbo Zhang and Jian Luan},
-      year={2025},
-      eprint={2503.11197},
-      archivePrefix={arXiv},
-      primaryClass={cs.SD},
-      url={https://arxiv.org/abs/2503.1119; https://github.com/xiaomi-research/r1-aqa}, 
+  title={Reinforcement Learning Outperforms Supervised Fine-Tuning: A Case Study on Audio Question Answering},
+  author={Li, Gang and Liu, Jizhong and Dinkel, Heinrich and Niu, Yadong and Zhang, Junbo and Luan, Jian},
+  journal={arXiv preprint arXiv:2503.11197},
+  year={2025},
+  url={https://github.com/xiaomi-research/r1-aqa; https://huggingface.co/mispeech/r1-aqa}
 }
 ```
