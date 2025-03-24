@@ -109,19 +109,8 @@ Evaluate the MMAU `Test-mini` dataset, please follow these steps:
   - To test the MMAU Test-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py), and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). The method for obtaining data is as follows:
 
 ```bash
-mkdir -p data && cd data
-
-git clone https://github.com/Sakshi113/MMAU.git
-
-cd data/MMAU
-
-#TODO you should download test-mini-audios.tar.gz to here
-***download test-mini-audios.tar.gz to here***
-
-# Uncompress wav files
-tar -xzvf test-mini-audios.tar.gz
-
-cd ../../
+# Run in the root directory of the repository
+./download_mmau.sh
 ```
 
 - Format Data  
