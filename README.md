@@ -56,6 +56,15 @@ Additional Notes:
 - 2025-03-18: Support the mode containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
 - 2025-03-17: Release the R1-AQA repository.
 
+## Installation
+
+```
+git clone https://github.com/xiaomi-research/r1-aqa.git
+cd r1-aqa
+uv init
+uv add -r requirements.txt
+```
+
 ## Training
 
 ### Data Preparation
@@ -98,6 +107,14 @@ sh run_grpo.sh
 
 - Replace the `DATA_FILE` variable in the `run_grpo.sh` with your dataset path.
 - If you already have the `Qwen2-Audio-7B-Instruct` model, please modify the `MODEL_NP` variable in `run_grpo.sh` to your local model path.
+
+## Running Inference
+
+A example inference script is provided in `inference.py` which requires a Wav file from MMAU `Test-mini` dataset. You can run it as follows
+
+```bash
+uv run inference.py
+```
 
 ## Testing
 
