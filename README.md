@@ -137,7 +137,7 @@ python src/utils/prepare_mmau.py \
 - Evaluation
 
 ```bash
-# Testing MMAU test-mini with in steps: [100, 200, 300, 400, 500]. 
+# Testing MMAU test-mini with in every 100 steps. 
 # You can modify the script to test other steps or change other parameters.
 sh test_mmau.sh
 ```
