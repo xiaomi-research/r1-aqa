@@ -56,6 +56,15 @@ Additional Notes:
 - 2025-03-18: Support the mode containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
 - 2025-03-17: Release the R1-AQA repository.
 
+## Installation
+
+```
+git clone https://github.com/xiaomi-research/r1-aqa.git
+cd r1-aqa
+uv init
+uv add -r requirements.txt
+```
+
 ## Training
 
 ### Data Preparation
@@ -99,6 +108,14 @@ sh run_grpo.sh
 - Replace the `DATA_FILE` variable in the `run_grpo.sh` with your dataset path.
 - If you already have the `Qwen2-Audio-7B-Instruct` model, please modify the `MODEL_NP` variable in `run_grpo.sh` to your local model path.
 
+## Running Inference
+
+A example inference script is provided in `inference.py` which requires a Wav file from MMAU `Test-mini` dataset. You can run it as follows
+
+```bash
+uv run inference.py
+```
+
 ## Testing
 
 ### MMAU Test-mini
@@ -109,19 +126,8 @@ Evaluate the MMAU `Test-mini` dataset, please follow these steps:
   - To test the MMAU Test-mini dataset requires the following files from the [MMAU](https://github.com/Sakshi113/MMAU/tree/main) repository: [mmau-test-mini.json](https://github.com/Sakshi113/MMAU/blob/main/mmau-test-mini.json), [evaluation.py](https://github.com/Sakshi113/MMAU/blob/main/evaluation.py), and [test-mini-audios.tar.gz](https://drive.google.com/file/d/1fERNIyTa0HWry6iIG1X-1ACPlUlhlRWA/view?usp=sharing). The method for obtaining data is as follows:
 
 ```bash
-mkdir -p data && cd data
-
-git clone https://github.com/Sakshi113/MMAU.git
-
-cd data/MMAU
-
-#TODO you should download test-mini-audios.tar.gz to here
-***download test-mini-audios.tar.gz to here***
-
-# Uncompress wav files
-tar -xzvf test-mini-audios.tar.gz
-
-cd ../../
+# Run in the root directory of the repository
+./download_mmau.sh
 ```
 
 - Format Data  

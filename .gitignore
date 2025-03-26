@@ -178,3 +178,8 @@ data/MMAU
 
 # Work
 exp
+
+# UV artifacts
+uv.lock
+.python-version
+pyproject.toml
