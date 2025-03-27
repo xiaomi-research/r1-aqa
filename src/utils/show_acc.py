@@ -18,7 +18,7 @@ def show_acc():
             test_iter = sub_dir.split("_")[-1]
             res_map = {"iter": test_iter}
 
-            eval_file = os.path.join(os.path.join(input_dir, sub_dir), "eval_mmau.json")
+            eval_file = os.path.join(os.path.join(input_dir, sub_dir), "eval_mmau_mini.txt")
             if not os.path.exists(eval_file):
                 continue
             with open(eval_file, "r", encoding="utf8") as reader:

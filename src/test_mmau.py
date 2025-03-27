@@ -22,8 +22,10 @@ class TestArguments:
     """
 
     model_path: Optional[str] = field(default=None, metadata={"help": "model dir"})
-    out_file: Optional[str] = field(default=None, metadata={"help": "output file for test"})
     data_file: Optional[str] = field(default=None, metadata={"help": "test file"})
+    audio_dir: Optional[str] = field(default=None, metadata={"help": "audio dir"})
+    out_file: Optional[str] = field(default=None, metadata={"help": "output file for test"})
+    batch_size: Optional[int] =  field(default=16, metadata={"help": "batch size"})
     force: Optional[bool] = field(default=False, metadata={"help": "force test"})
 
     def __post_init__(self):
@@ -49,7 +51,7 @@ def _get_message(obj_dict):
         {
             "role": "user",
             "content": [
-                {"type": "audio", "audio_url": f"{obj_dict['audio']}"},
+                {"type": "audio", "audio_url": f"{obj_dict['audio_id']}"},
                 {"type": "text", "text": question_template},
             ],
         }
@@ -67,19 +69,20 @@ def main():
     if not data_args.force and os.path.exists(data_args.out_file) and os.path.getsize(data_args.out_file) > 0:
         logging.info(f"The {data_args.out_file} exists. Do not regenerate it.")
         return
+    
+    out_dir = os.path.abspath(os.path.dirname(data_args.out_file))
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
 
-    qwen2_audio_processor = AutoProcessor.from_pretrained(data_args.model_path)
-    qwen2_audio_model = Qwen2AudioForConditionalGeneration.from_pretrained(
-        data_args.model_path, torch_dtype=torch.bfloat16, device_map="auto"
-    )
+    audio_processor = AutoProcessor.from_pretrained(data_args.model_path)
+    audio_model = Qwen2AudioForConditionalGeneration.from_pretrained(data_args.model_path, torch_dtype=torch.bfloat16, device_map="auto")
 
     datas = []
-    with open(data_args.data_file, "r", encoding="utf8") as reader:
-        for line in reader:
-            datas.append(json.loads(line))
-
+    with open(data_args.data_file, "r") as f:
+        datas = json.load(f)
+    
     all_outputs = []
-    batch_size = 16
+    batch_size = data_args.batch_size
     for i in tqdm(range(0, len(datas), batch_size)):
         batch_data = datas[i : i + batch_size]
 
@@ -87,19 +90,20 @@ def main():
         batch_audios = []
         for bd in batch_data:
             batch_messages.append(_get_message(bd))
-            batch_audios.append(_get_audio(bd["audio"]).numpy())
+            audio_path = os.path.join(data_args.audio_dir, bd["audio_id"])
+            batch_audios.append(_get_audio(audio_path).numpy())
 
         text = [
-            qwen2_audio_processor.apply_chat_template(msg, add_generation_prompt=True, tokenize=False)
+            audio_processor.apply_chat_template(msg, add_generation_prompt=True, tokenize=False)
             for msg in batch_messages
         ]
-        inputs = qwen2_audio_processor(
+        inputs = audio_processor(
             text=text, audios=batch_audios, sampling_rate=16000, return_tensors="pt", padding=True
-        ).to(qwen2_audio_model.device)
+        ).to(audio_model.device)
 
-        generated_ids = qwen2_audio_model.generate(**inputs, max_new_tokens=256)
+        generated_ids = audio_model.generate(**inputs, max_new_tokens=256)
         generated_ids = generated_ids[:, inputs.input_ids.size(1) :]
-        response = qwen2_audio_processor.batch_decode(
+        response = audio_processor.batch_decode(
             generated_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False
         )
         all_outputs.extend(response)
@@ -120,8 +124,7 @@ def main():
 
         # Create a result dictionary for this example
         result = input_example
-        result["model_output"] = model_answer
-        result["model_output_ori"] = original_output
+        result["model_prediction"] = model_answer
         final_output.append(result)
 
     # Save results to a JSON file

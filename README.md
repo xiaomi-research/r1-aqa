@@ -115,6 +115,8 @@ git clone https://github.com/Sakshi113/MMAU.git
 
 cd data/MMAU
 
+# ***Check if output_key = 'model_output' in evaluation.py, change it to output_key = 'model_prediction'.***
+
 #TODO you should download test-mini-audios.tar.gz to here
 ***download test-mini-audios.tar.gz to here***
 
@@ -124,20 +126,11 @@ tar -xzvf test-mini-audios.tar.gz
 cd ../../
 ```
 
-- Format Data  
-
-```bash
-# Prepare the data format file we need
-python src/utils/prepare_mmau.py \
-    --input_file data/MMAU/mmau-test-mini.json \
-    --wav_dir data/MMAU/test-mini-audios \
-    --out_file data/MMAU/mmau-mini.data
-```
-
 - Evaluation
 
 ```bash
 # Testing MMAU test-mini with in every 100 steps. 
+# You can uncomment the line 12 of test_mmau.sh to eval the entire MMAU, if you have downloaded test-audios.tar.gz.
 # You can modify the script to test other steps or change other parameters.
 sh test_mmau.sh
 ```
