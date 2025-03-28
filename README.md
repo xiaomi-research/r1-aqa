@@ -38,7 +38,7 @@ Additional Notes:
 
 #### Notes
 
-1️ It is the original model, identical to the one on Hugging Face and described in our technical report.  
+1️⃣ It is the original model, identical to the one on Hugging Face and described in our technical report.  
 2️⃣ It is the model submitted to [EvalAI](https://eval.ai/web/challenges/challenge-page/2391/overview) for evaluation, trained multiple times to achieve balanced results. (**The results on the [leaderboard](https://sakshi113.github.io/mmau_homepage/#leaderboard) contain some typographical errors, and we are currently in communication with the organizers to correct them.**)  
 \* The data are sourced from the [MMAU official website](https://sakshi113.github.io/mmau_homepage/)  
 \[1\] Xie, Zhifei, et al. "Audio-Reasoner: Improving Reasoning Capability in Large Audio Language Models." arXiv preprint arXiv:2503.02318 (2025).  
