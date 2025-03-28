@@ -3,7 +3,7 @@
 ## Introduction
 
 R1-AQA is a audio question answering (AQA) model based on `Qwen2-Audio-7B-Instruct`, optimized through reinforcement learning (RL) using the group relative policy optimization (GRPO) algorithm.
-This implementation has achieved state-of-the-art performance on MMAU *Test-mini* benchmark with only 38k post-training samples.
+This implementation has achieved state-of-the-art performance on the MMAU benchmark with only 38k post-training samples.
 
 Our main findings are as follows:
 
@@ -17,7 +17,7 @@ Additional Notes:
 - The AVQA training set originally consists of approximately 40k samples. However, we use only about 38k samples because some data sources have become invalid. Other datasets using YouTube sources face a similar issue, such as AudioSet. We believe that the missing 2k samples do not have a significant impact on the training results.
 - The statement about the 8.2B parameters is based on the *Qwen2-Audio Technical Report*.
 
-### Table: Accuracies (%) on MMAU benchmark
+### Table: Accuracies (%) on the MMAU benchmark
 
 | Model                                 | Method                | Test-mini | Test  | Test-mini | Test  | Test-mini | Test  | Test-mini | Test  |
 |---------------------------------------|-----------------------|-----------|-------|-----------|-------|-----------|------|------------|-------|
@@ -26,10 +26,7 @@ Additional Notes:
 | Audio Flamingo 2                      | Direct Inference\*    | 61.56     | 65.10 | 73.95     | 72.90 | 30.93     | 40.26 | 55.48     | 59.42 |
 | GPT4o + Strong Cap.                   | Direct Inference\*    | 57.35     | 55.83 | 49.70     | 51.73 | 64.86     | 68.66 | 57.30     | 58.74 |
 | Llama-3-8B-Instruct + Strong Cap.     | Direct Inference\*    | 50.75     | 49.10 | 48.93     | 48.93 | 55.25     | 62.70 | 52.10     | 53.57 |
-| Gemini Pro v1.5                       | Direct Inference\*    | 56.75     | 54.46 | 49.40     | 48.56 | 58.55     | 55.90 | 54.90     | 52.97 |
 | Qwen2-Audio-7B-Instruct               | Direct Inference\*    | 54.95     | 45.90 | 50.98     | 53.26 | 42.04     | 45.90 | 49.20     | 52.50 |
-| GPT4o + weak cap.                     | Direct Inference\*    | 39.33     | 35.80 | 41.90     | 39.52 | 58.25     | 68.27 | 45.70     | 48.65 |
-| Llama-3-8B-Instruct + Weak Cap.       | Direct Inference\*    | 34.23     | 33.73 | 38.02     | 42.36 | 54.05     | 61.54 | 42.10     | 45.87 |
 | SALAMONN                              | Direct Inference\*    | 41.00     | 40.30 | 34.80     | 33.76 | 25.50     | 24.24 | 33.70     | 32.77 |
 | Qwen2-Audio-7B-Instruct               | CoTA \[1\]            | 60.06     | -     | 64.30     | -     | 60.70     | -     | 61.71     | -     |
 | Qwen2-Audio-7B-Instruct               | Zero-Shot-CoT \[2\]   | 61.86     | -     | 56.29     | -     | 55.26     | -     | 57.80     | -     |
