@@ -35,13 +35,13 @@ Additional Notes:
 
 #### Notes
 
-1️⃣ It is the original model, identical to the one on Hugging Face and described in our technical report.  
-2️⃣ It is the model submitted to [EvalAI](https://eval.ai/web/challenges/challenge-page/2391/overview) for evaluation, trained multiple times to achieve balanced results. (**The results on the [leaderboard](https://sakshi113.github.io/mmau_homepage/#leaderboard) contain some typographical errors, and we are currently in communication with the organizers to correct them.**)  
-\* The data are sourced from the [MMAU official website](https://sakshi113.github.io/mmau_homepage/).  
+\* The data are sourced from the [MMAU leaderboard](https://sakshi113.github.io/mmau_homepage/#leaderboard).  
 \[1\] Xie, Zhifei, et al. "Audio-Reasoner: Improving Reasoning Capability in Large Audio Language Models." arXiv preprint arXiv:2503.02318 (2025).  
 \[2\] Ma, Ziyang, et al. "Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Language Model." arXiv preprint arXiv:2501.07246 (2025).  
+1️⃣ It is the original model, identical to the one on Hugging Face and described in our technical report.  
+2️⃣ It is the model submitted to the [MMAU leaderboard](https://sakshi113.github.io/mmau_homepage/#leaderboard), trained multiple times to achieve balanced results.  
 
-**Huggingface:**  
+**Hugging Face:**  
 [🤗 R1-AQA Model: mispeech/r1-aqa](https://huggingface.co/mispeech/r1-aqa)  
 
 **arXiv:**  
@@ -54,7 +54,7 @@ Additional Notes:
 
 ### Updates
 
-- 2025-03-28: Update our results on MMAU leaderboard.
+- 2025-03-28: Update our results on the MMAU leaderboard.
 - 2025-03-18: Support the mode containing `<think> </think>` (*GRPO + Prompt <3>* in our technical report).
 - 2025-03-17: Release the R1-AQA repository.
 
